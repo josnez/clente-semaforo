@@ -40,17 +40,10 @@ public class Tarjeta implements Runnable {
 
         //capturar los flujos
         datosEntrada = new DataInputStream(sock.getInputStream());
+        datosSalida = new DataOutputStream(sock.getOutputStream());
 
         // COMUNICACION
         hiloLectura.start();
-        do{
-        }while(this.lecturaActiva);
-        System.out.println("Me despido!");
-
-        // Finalizar
-        datosEntrada.close();
-        sock.close();
-
     }
 
     @Override
@@ -72,6 +65,7 @@ public class Tarjeta implements Runnable {
                 System.out.print("El servidor envía: ");
                 System.out.println(intData + " " + binaryData);
                 // procesaro info
+                // todo responder al server
                 modelo.procesarInformacion(binaryData);
 
                 if(binaryData.toString().equals("ADIOS")){
@@ -85,6 +79,15 @@ public class Tarjeta implements Runnable {
             } catch (IOException ex) {
                 System.out.println("error en la comunicación");
             }
+        }
+
+        // Finalizar
+        try {
+            datosEntrada.close();
+            datosSalida.close();
+            sock.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

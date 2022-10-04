@@ -1,13 +1,6 @@
 package presentacion;
 
-import logica.Led;
 import logica.Semaforo;
-import logica.TestSistemaCliente;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Modelo {
 
