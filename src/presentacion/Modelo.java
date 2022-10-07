@@ -1,6 +1,9 @@
 package presentacion;
 
 import logica.Semaforo;
+import logica.Tarjeta;
+
+import java.io.IOException;
 
 public class Modelo {
 
@@ -11,7 +14,14 @@ public class Modelo {
     private Ventana ventana;
 
     public void iniciar() {
+        // todo inicializar interfaz
 
+        Tarjeta tarjeta1 = new Tarjeta(this);
+        try {
+            tarjeta1.conectar();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Ventana getVentana() {
@@ -26,7 +36,7 @@ public class Modelo {
         while (binaryData.length() < 8) {
             binaryData = "0" + binaryData;
         }
-
+        System.out.println("Binary data: " + binaryData);
         // todo cambiar estado de leds
 
     }

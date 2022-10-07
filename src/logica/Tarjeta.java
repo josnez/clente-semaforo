@@ -68,10 +68,10 @@ public class Tarjeta implements Runnable {
                 // todo responder al server
                 modelo.procesarInformacion(binaryData);
 
-                if(binaryData.toString().equals("ADIOS")){
+                if(intData == 14){
                     System.out.println("entra");
                     this.lecturaActiva = false;
-                    break;
+                    //break;
                 }else{
                     System.out.println("Diferentes");
                 }
