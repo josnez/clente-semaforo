@@ -57,8 +57,7 @@ public class Tarjeta implements Runnable {
             try {
                 // lee lo que envía el server
                 System.out.println("Esperando mensaje...");
-                /*buffer = new byte[500];
-                datosEntrada.read(buffer); // Se queda acá, hasta que el servidor envíe algo*/
+                // Se queda acá, hasta que el servidor envíe algo*/
                 intData = datosEntrada.readInt();
                 // decodificar el mensaje
                 binaryData = Integer.toBinaryString(intData);
